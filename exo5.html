@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const articles = [
+{id : 1 , titre : "article 1", like : 10 , id_auteur : 1},
+{id : 2 , titre : "article 2", like : 0 , id_auteur : 3},
+{id : 3 , titre : "article 3", like : 15 , id_auteur : 1},
+{id : 4 , titre : "article 4", like : 1 , id_auteur : 2},
+]
+const auteurs = [
+{id : 1 , nom : "Alain" , isActif : true},
+{id : 2 , nom : "Béatrice" , isActif : false},
+{id : 3 , nom : "Charles" , isActif : true}
+]
+const comcom = [
+{id : 1 , contenu : "lorem 1" , id_article : 4},
+{id : 2 , contenu : "lorem 2" , id_article : 1},
+{id : 3 , contenu : "lorem 3" , id_article : 2},
+{id : 4 , contenu : "lorem 4" , id_article : 2},
+{id : 5 , contenu : "lorem 5" , id_article : 1},
+]
+
+function get_data(articles, auteurs, comcom) {
+    let data = [];
+    let record = {};
+    let comments = [];
+   for (const x in articles) {
+                record["id"]=articles[x]["id"],
+                record["titre"]=articles[x]["titre"],
+                record["like"]=articles[x]["like"];
+        for (const y in auteurs) {
+             if (articles[x]["id_auteur"]===auteurs[y]["id"]) {
+                record["auteur"] = auteurs[y];
+            }
+           }
+        for (const z in comcom) {
+             if (articles[x]["id"]===comcom[z]["id_article"]) {
+                //  console.log({"id":comcom[z]["id"],"contenu":comcom[z]["contenu"]});
+                 comments.push({"id":comcom[z]["id"],"contenu":comcom[z]["contenu"]});
+             }
+            }
+        record["commentaires"]=comments;          
+        data.push(record);
+        record={};
+        comments=[];
+       }
+    console.log(data);
+    return(data);
+   }
+        console.log(get_data(articles, auteurs, comcom));
+    
+    
+
+    </script>
+</body>
+</html>

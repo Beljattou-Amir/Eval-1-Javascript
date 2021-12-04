@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // const t1 =["a","3ezzedine","highwest"];
+        // const t2 = ["3fat","chleka","69"];
+
+        //  function Fusion(t1, t2) {
+            
+            
+        // }
+
+        function arrayUnique(array) {
+    let a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
+let t1 = ["a","b"];
+let t2 = ["b", "c"];
+  
+let t3 = arrayUnique(t1.concat(t2));
+console.log(t3);
+         
+    </script>
+</body>
+</html>
